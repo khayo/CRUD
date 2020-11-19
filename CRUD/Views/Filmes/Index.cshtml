@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Filmes";
+    List<Business.Filme> filmes = ViewBag.Filmes;
+}
+
+
+@if (TempData["sucesso"] != null)
+{
+    <div class="alert alert-success">@TempData["sucesso"]</div>
+}
+
+@if (TempData["erro"] != null)
+{
+    <div class="alert alert-danger">@TempData["erro"]</div>
+}
+
+<h2>Filmes</h2>
+<div class="jumbotron">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+
+                <th scope="col">Nome</th>
+                <th scope="col">Diretor</th>
+                <th scope="col">Data Lançamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in filmes)
+            {
+                <tr>
+
+                    <td>@f.Nome</td>
+                    <td>@f.Diretor</td>
+                    <td>@f.DataLancamento.ToString("d")</td>
+                    <td><a href="/filmes/editar/@f.Id" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td><a href="/filmes/excluir/@f.Id" class="btn btn-danger" onclick="ValidaExclusao(@f.Id, event)"><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        @if (filmes.Count() == 0)
+        {
+            <div>
+                <p>Nenhum filme cadastrado</p>
+            </div>
+        }
+    <div>
+        <a href="/filmes/cadastrar" class="btn btn-default">Cadastrar Filme</a>
+    </div>
+</div>
