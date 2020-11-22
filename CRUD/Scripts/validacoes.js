@@ -1,5 +1,5 @@
 ﻿var ValidaExclusao = function (id, evento) {
-    if (confirm("Confirmar exclusão do filme?")) {
+    if (confirm("Confirmar exclusão?")) {
         return true;
     } else {
         evento.preventDefault();
