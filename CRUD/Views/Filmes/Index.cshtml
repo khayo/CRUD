@@ -33,18 +33,23 @@
                     <td>@f.Nome</td>
                     <td>@f.Diretor</td>
                     <td>@f.DataLancamento.ToString("d")</td>
-                    <td><a href="/filmes/editar/@f.Id" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    <td><a href="/filmes/excluir/@f.Id" class="btn btn-danger" onclick="ValidaExclusao(@f.Id, event)"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a href="/filmes/editar/@f.Id" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="/filmes/excluir/@f.Id" role="button" class="btn btn-danger" onclick="ValidaExclusao(@f.Id, event)"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </td>
+
                 </tr>
             }
         </tbody>
     </table>
-        @if (filmes.Count() == 0)
-        {
-            <div>
-                <p>Nenhum filme cadastrado</p>
-            </div>
-        }
+    @if (filmes.Count() == 0)
+    {
+        <div>
+            <p>Nenhum filme cadastrado</p>
+        </div>
+    }
     <div>
         <a href="/filmes/cadastrar" class="btn btn-default">Cadastrar Filme</a>
     </div>
