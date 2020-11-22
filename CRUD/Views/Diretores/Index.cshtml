@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Diretores";
+    List<Business.Diretor> diretores = ViewBag.Diretores;
+}
+
+
+@if (TempData["sucesso"] != null)
+{
+    <div class="alert alert-success">@TempData["sucesso"]</div>
+}
+
+@if (TempData["erro"] != null)
+{
+    <div class="alert alert-danger">@TempData["erro"]</div>
+}
+
+<h2>Diretores</h2>
+<div class="jumbotron">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in diretores)
+            {
+                <tr>
+
+                    <td>@d.Nome</td>
+
+                    <td>
+                        <div class="btn-group" role="button">
+                            <a href="/diretores/editar/@d.Id" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="/diretores/excluir/@d.Id" role="button" class="btn btn-danger" onclick="ValidaExclusao(@d.Id, event)"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (diretores.Count() == 0)
+    {
+        <div>
+            <p>Nenhum diretor cadastrado</p>
+        </div>
+    }
+    <div>
+        <a href="/diretores/cadastrar" class="btn btn-default">Cadastrar Diretor</a>
+    </div>
+</div>

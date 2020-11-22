@@ -1,0 +1,16 @@
+﻿@{
+    Business.Diretor diretor = ViewBag.Diretor;
+}
+<div class="jumbotron">
+    <h2>Editar Diretor</h2>
+    <form action="/diretores/alterar/@diretor.Id" method="post">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="@diretor.Nome">
+        </div>       
+        <div class="form-group">
+            <a href="/diretores" class="btn btn-default">Voltar</a>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+    </form>
+</div>

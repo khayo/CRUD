@@ -14,6 +14,42 @@ namespace CRUD
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "diretores",
+                "diretores",
+                new { controller = "Diretores", action = "Index" }
+                );
+
+            routes.MapRoute(
+                "diretores_criar",
+                "diretores/criar",
+                new { controller = "Diretores", action = "Criar" }
+                );
+
+            routes.MapRoute(
+                "diretores_cadastrar",
+                "diretores/cadastrar",
+                new { controller = "Diretores", action = "Cadastrar" }
+                );
+
+            routes.MapRoute(
+                "diretores_alterar",
+                "diretores/alterar/{id}",
+                new { controller = "Diretores", action = "Alterar", id = 0 }
+                );
+
+            routes.MapRoute(
+                "diretores_excluir",
+                "diretores/excluir/{id}",
+                new { controller = "Diretores", action = "Excluir", id = 0 }
+                );
+
+            routes.MapRoute(
+                "diretores_editar",
+                "diretores/editar/{id}",
+                new { controller = "Diretores", action = "Editar", id = 0 }
+                );
+
+            routes.MapRoute(
                 "filmes",
                 "filmes",
                 new { controller = "Filmes", action = "Index" }
