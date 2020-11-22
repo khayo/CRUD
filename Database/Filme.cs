@@ -37,23 +37,18 @@ namespace Database
         {
             using (SqlConnection connection = new SqlConnection(sqlConn()))
             {
-                string queryString = "exec dbo.spInserirFilme @nome , @diretor , @dataLancamento";
-                if (id != 0)
-                {
-                    queryString = "exec dbo.spAlteraFilme @id , @nome , @diretor , @dataLancamento";
-                }
+                string queryString = id != 0 ? "exec dbo.spAlteraFilme @id , @nome , @diretor , @dataLancamento" : "exec dbo.spInserirFilme @nome , @diretor , @dataLancamento";
+                
                 SqlCommand command = new SqlCommand(queryString, connection);
-                if (id != 0)
-                {
-                    command.Parameters.Add(new SqlParameter("@id", id));
-
+                if (id != 0) 
+                { 
+                    command.Parameters.Add(new SqlParameter("@id", id)); 
                 }
-
                 command.Parameters.Add(new SqlParameter("@nome", nome));
                 command.Parameters.Add(new SqlParameter("@diretor", diretor));
                 command.Parameters.Add(new SqlParameter("@dataLancamento", dataLancamento.ToString("d")));
-                command.Connection.Open();
 
+                command.Connection.Open();
                 command.ExecuteNonQuery();
             }
         }
@@ -62,7 +57,7 @@ namespace Database
         {
             using (SqlConnection connection = new SqlConnection(sqlConn()))
             {
-                string queryString = "EXEC dbo.spBuscaFilmePorId @id";
+                string queryString = "EXEC dbo.spBuscarFilmePorId @id";
                 SqlCommand command = new SqlCommand(queryString, connection);
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.Connection.Open();
@@ -80,7 +75,7 @@ namespace Database
         {
             using (SqlConnection connection = new SqlConnection(sqlConn()))
             {
-                string queryString = "exec dbo.spApagaPorId @id";
+                string queryString = "exec dbo.spApagarFilmePorId @id";
 
                 SqlCommand command = new SqlCommand(queryString, connection);
                 command.Parameters.Add(new SqlParameter("@id", id));
