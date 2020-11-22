@@ -19,6 +19,7 @@ namespace CRUD.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public void Criar()
         {
@@ -71,7 +72,5 @@ namespace CRUD.Controllers
 
             Response.Redirect("/filmes");
         }
-
     }
-
 }
